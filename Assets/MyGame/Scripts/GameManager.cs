@@ -1,24 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
+    private const string SceneName = "MainScene";
+    private const string SceneName1 = "MenuScene";
     public static GameManager instance;
     public GameObject gameOverPanel;
     public Text scoreText;
+    int score = 0;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
     }
-
 
     public void GameOver()
     {
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         TextureScroll[] scrollingObjects = FindObjectsOfType<TextureScroll>();
 
-        foreach(TextureScroll item in scrollingObjects)
+        foreach (TextureScroll item in scrollingObjects)
         {
             item.scroll = false;
             Debug.Log(item.name);
@@ -40,17 +39,16 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(SceneName);
     }
 
     public void Menu()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene(SceneName1);
     }
 
     public void IncrementScore()
     {
-        int score = 0;
         score++;
         scoreText.text = score.ToString();
     }
