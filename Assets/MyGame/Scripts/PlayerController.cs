@@ -6,8 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
-    [SerializeField]
-    float jumpForce;
+    [SerializeField] float jumpForce;
     bool grounded;
     bool gameOver = false;
 
